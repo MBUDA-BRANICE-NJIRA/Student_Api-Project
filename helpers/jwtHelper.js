@@ -1,6 +1,6 @@
 const JWT = require("jsonwebtoken");
 const createError = require("http-errors");
-const User = require("../Models/studentAuthModel");
+const User = require("../models/studentAuthModel");
 const { response } = require("express");
 
 module.exports = {

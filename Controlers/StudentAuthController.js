@@ -1,7 +1,7 @@
-const { authSchema } = require("../Helpers/validationSchema");
-const StudentAuth = require("../Models/studentAuthModel");
+const { authSchema } = require("../helpers/validationSchema");
+const StudentAuth = require("../models/studentAuthModel");
 const createError = require("http-errors");
-const { signAccessToken } = require("../Helpers/jwtHelper");
+const { signAccessToken } = require("../helpers/jwtHelper");
 
 module.exports = {
     register: async (request, response, next) => {

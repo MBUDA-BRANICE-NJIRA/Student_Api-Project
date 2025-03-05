@@ -1,7 +1,7 @@
 //!
 const express = require("express");
-const { studentAuth } = require("../Helpers/validationSchema");
-const Student = require("../Models/StudentModel");
+const { studentAuth } = require("../helpers/validationSchema");
+const Student = require("../models/StudentModel");
 const createError = require("http-errors");
 const { mongo, default: mongoose } = require("mongoose");
 module.exports = {

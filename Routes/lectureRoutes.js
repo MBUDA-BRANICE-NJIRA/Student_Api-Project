@@ -1,19 +1,19 @@
 const express = require("express");
-const Lecturer_contoller = require("../Controlers/lecturerController");
+const Lecture_contoller = require("../Controlers/lectureController");
 
-const Lecturer_route = express.Router();
+const Lecture_route = express.Router();
 
-Lecturer_route.post("/addLecturer", Lecturer_contoller.addLecturer);
+Lecture_route.post("/addLecture", Lecture_contoller.addLecture);
 
-Lecturer_route.get("/all-Lecturers", Lecturer_contoller.getAllLecturers);
+Lecture_route.get("/all-Lecturers", Lecture_contoller.getAllLectures);
 
-Lecturer_route.get("/lecturer-details/id:", Lecturer_contoller.getLecturerById);
+Lecture_route.get("/lecture-details/id:", Lecture_contoller.getLectureById);
 
-Lecturer_route.patch(
-    "/updateLecturerDetails/id:",
-    Lecturer_contoller.updateLecturerCredentials
+Lecture_route.patch(
+    "/updateLectureDetails/id:",
+    Lecture_contoller.updateLectureCredentials
 );
 
-Lecturer_route.delete("/delete-Lecturer/id:", Lecturer_contoller.deleteLecture);
+Lecture_route.delete("/delete-Lecture/id:", Lecture_contoller.deleteLecture);
 
-module.exports = Lecturer_route;
+module.exports = Lecture_route;

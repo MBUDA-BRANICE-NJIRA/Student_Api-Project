@@ -4,24 +4,24 @@ const Schema = mongoose.Schema;
 //! structure for the lecturer model
 
 const LecturerSchema = new Schema({
-    lecturerName: {
+    lectureName: {
         type: String,
         required: [true, "Please enter name (both)"],
     },
-    lecturerEmail: {
+    lectureEmail: {
         type: String,
-        required: [true, "please enter lecturer email"],
+        required: [true, "please enter lecture email"],
     },
-    lecturerPhone: {
+    lecturePhone: {
         type: String,
-        required: [true, "please enter lecturer phone"],
+        required: [true, "please enter lecture phone"],
     },
-    lecturerDepartment: {
+    lectureDepartment: {
         type: String,
-        required: [true, "please enter lecturer department"],
+        required: [true, "please enter lecture department"],
     },
 });
 
-const Lecturer = mongoose.model("Lecturer", LecturerSchema);
+const Lecture = mongoose.model("Lecture", LectureSchema);
 
-module.exports = Lecturer;
+module.exports = Lecture;
