@@ -4,7 +4,7 @@ const { mongo, default: mongose } = require("mongoose");
 const { options } = require("../Routes/StudentRoutes");
 
 module.exports = {
-    addLecturer: async (request, response, next) => {
+    addLecture: async (request, response, next) => {
         try {
             const addLecture = new Lecture(request.body);
             const result = await addLecture.save();
