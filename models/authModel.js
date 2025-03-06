@@ -12,6 +12,12 @@ const StudentAuthSchema = new Schema({
         type: String,
         required: [true, "Please enter your password"],
     },
+
+    //This the one responsible for identifying the different roles
+    
+    role:{
+        type: DataType.ENUM('user', 'admin', 'teacher', 'student'),///////NOTE AND RE-LOOK
+    }
 });
 
 //! Hashing the password

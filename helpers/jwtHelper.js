@@ -1,10 +1,10 @@
 const JWT = require("jsonwebtoken");
 const createError = require("http-errors");
-const User = require("../models/studentAuthModel");
+const User = require("../models/authModel");
 const { response } = require("express");
 
 module.exports = {
-    signAccessToken: (UserId) => {
+    signAccessToken: (UserId,  userRole) => {
         return new Promise((resolve, reject) => {
             const payload = {};
             const Secret = process.env.ACCESS_TOKEN_SECRET;
@@ -67,16 +67,17 @@ module.exports = {
         return(req, res, next) => {
             const userRole = req.payload.role;
 
-            if(!userRole || !allowedrole.includes(userRole)){
+            if(!userRole || !allowedrole.includes(userRole)) {
                 return next(
                     createError.Forbidden(
                         'Sorry! You are not authorized to access this resource'
                     )
                 );
             }
+
             next();
         }
     }
-};
+}
 
 
