@@ -61,4 +61,22 @@ module.exports = {
             });
         });
     },
+
+    //For cheching multiple roles
+    restrict : (...allowedrole) => {
+        return(req, res, next) => {
+            const userRole = req.payload.role;
+
+            if(!userRole || !allowedrole.includes(userRole)){
+                return next(
+                    createError.Forbidden(
+                        'Sorry! You are not authorized to access this resource'
+                    )
+                );
+            }
+            next();
+        }
+    }
 };
+
+
