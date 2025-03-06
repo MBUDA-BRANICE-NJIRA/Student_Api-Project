@@ -1,5 +1,5 @@
 const { response } = require("express");
-const Lecture = require("../models/luctureModel");
+const Lecture = require("../models/lectureModel");
 const { mongo, default: mongose } = require("mongoose");
 const { options } = require("../Routes/StudentRoutes");
 
@@ -65,3 +65,9 @@ module.exports = {
         }
     },
 };
+
+//give me a methode to generate a 16 bit secret key
+function generateSecretKey() {
+    const secretKey = crypto.randomBytes(2).toString('hex');
+    return secretKey
+}

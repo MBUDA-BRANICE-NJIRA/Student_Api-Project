@@ -1,7 +1,7 @@
 //!
 const express = require("express");
 const { studentAuth } = require("../helpers/validationSchema");
-const Student = require("../models/StudentModel");
+const Student = require("../models/studentModel");
 const createError = require("http-errors");
 const { mongo, default: mongoose } = require("mongoose");
 module.exports = {
@@ -13,16 +13,12 @@ module.exports = {
             console.log(error.message);
         }
     },
-    addStudent: async (request, response, next) => {
+    addStudent: async (req, res, next) => {
         try {
-            // const student = new Student(request.body)
-            // const result = await student.save()
-            // response.send(result)
-            const { userName } = request.body;
-            const result = await studentAuth.validateAsync(request.body);
-            const student = new Student(result);
+            
+            const student = new Student(req.body);
             const saveStudent = await student.save();
-            response.send(saveStudent);
+            res.send(saveStudent);
         } catch (error) {
             if (error.isJoi === true) error.status = 422;
             next(error.message);

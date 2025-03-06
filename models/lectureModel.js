@@ -1,9 +1,10 @@
 const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
+const LectureSchema = mongoose.Schema;
+
 
 //! structure for the lecturer model
 
-const LecturerSchema = new Schema({
+const LecturerSchema = new LectureSchema({
     lectureName: {
         type: String,
         required: [true, "Please enter name (both)"],
@@ -22,6 +23,6 @@ const LecturerSchema = new Schema({
     },
 });
 
-const Lecture = mongoose.model("Lecture", LectureSchema);
+const Lecture = mongoose.model("Lecture", LecturerSchema);
 
 module.exports = Lecture;
