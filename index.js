@@ -20,7 +20,7 @@ const Limiter = rateLimit ({
 //! Importing Routes:
 const Student_Routes = require("./Routes/StudentRoutes");
 const Lecturer_routes = require("./Routes/lectureRoutes");
-const Student_Auth_Routes = require("./Routes/studentAuthRoutes");
+const Student_Auth_Routes = require("./Routes/authRoutes");
 
 //! to use body-parser
 app.use(express.json());

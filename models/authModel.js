@@ -15,9 +15,9 @@ const StudentAuthSchema = new Schema({
 
     //This the one responsible for identifying the different roles
     
-    role:{
-        type: DataType.ENUM('user', 'admin', 'teacher', 'student'),///////NOTE AND RE-LOOK
-    }
+    // role:{
+    //     type: DataType.ENUM('user', 'admin', 'teacher', 'student'),///////NOTE AND RE-LOOK
+    // }
 });
 
 //! Hashing the password

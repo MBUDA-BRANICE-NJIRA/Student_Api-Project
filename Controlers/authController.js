@@ -1,5 +1,5 @@
 const { authSchema } = require("../helpers/validationSchema");
-const StudentAuth = require("../models/studentAuthModel");
+const StudentAuth = require("../models/authModel");
 const createError = require("http-errors");
 const { signAccessToken } = require("../helpers/jwtHelper");
 

@@ -1,7 +1,9 @@
-const studentAuthController = require("../Controlers/StudentAuthController");
+const studentAuthController = require("../Controlers/authController");
 const express = require("express");
 
 const studentAuthRoute = express.Router();
+
+
 
 studentAuthRoute.post("/studentauthadd", studentAuthController.register);
 studentAuthRoute.get("/getAllUsers", studentAuthController.getUsers);
