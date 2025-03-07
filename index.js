@@ -36,9 +36,9 @@ app.use(Student_Auth_Routes);
 // app.use('students')
 
 //! handling 404 errors
-app.use(async (request, response, next) => {
-    next(createError.NotFound())
-})
+// app.use(async (request, response, next) => {
+//     next(createError.NotFound())
+// })
 
 // app.use((error, request, response, next) => {
 //     response.status
