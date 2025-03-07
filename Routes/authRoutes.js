@@ -5,8 +5,8 @@ const studentAuthRoute = express.Router();
 
 
 
-studentAuthRoute.post("/studentauthadd", studentAuthController.register);
+studentAuthRoute.post("/register", studentAuthController.register);
 studentAuthRoute.get("/getAllUsers", studentAuthController.getUsers);
-studentAuthRoute.get("/login", studentAuthController.login);
+studentAuthRoute.post("/login", studentAuthController.login);
 
 module.exports = studentAuthRoute;
