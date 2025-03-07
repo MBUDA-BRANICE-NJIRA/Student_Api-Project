@@ -55,6 +55,11 @@ app.use((err,req,res,next)=>{
     });
 });
 
+//To connect with the react APPLICATION WE ALLOW THE API This avoids the Course error
+
+
+
+
 // Middleware
 app.listen(process.env.PORT || 5000, () => {
     console.log(`Now listening for request on http://localhost:${process.env.PORT}`);
