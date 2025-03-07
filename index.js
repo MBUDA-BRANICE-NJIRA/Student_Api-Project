@@ -29,6 +29,7 @@ app.use("/students", Student_Routes);
 app.use("/lectures", Lecturer_routes);
 app.use("/studentAuth", Student_Auth_Routes);
 
+//! Using the Imported Routes:
 app.use(Student_Routes); //! Using the Imported Routes:
 app.use(Lecturer_routes);
 app.use(Student_Auth_Routes);
@@ -36,13 +37,14 @@ app.use(Student_Auth_Routes);
 // app.use('students')
 
 //! handling 404 errors
-// app.use(async (request, response, next) => {
-//     next(createError.NotFound())
-// })
+app.use(async (request, response, next) => {
+    next(createError.NotFound())
+})
 
-// app.use((error, request, response, next) => {
-//     response.status
-// })
+app.use((error, request, response, next) => {
+    response.status
+})
+
 //handling 404 error
 //Error handler
 app.use((err,req,res,next)=>{
@@ -56,10 +58,6 @@ app.use((err,req,res,next)=>{
 });
 
 //To connect with the react APPLICATION WE ALLOW THE API This avoids the Course error
-
-
-
-
 // Middleware
 app.listen(process.env.PORT || 5000, () => {
     console.log(`Now listening for request on http://localhost:${process.env.PORT}`);
