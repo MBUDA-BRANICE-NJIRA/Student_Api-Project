@@ -1,9 +1,10 @@
 //!
 const express = require("express");
+const app = express();
 const { studentAuth } = require("../helpers/validationSchema");
 const Student = require("../models/studentModel");
 const createError = require("http-errors");
-const { mongo, default: mongoose } = require("mongoose");
+const {default: mongoose } = require("mongoose");
 module.exports = {
     getAllStudents: async (request, response, next) => {
         try {
