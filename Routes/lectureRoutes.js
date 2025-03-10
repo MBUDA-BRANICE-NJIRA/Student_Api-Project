@@ -7,12 +7,12 @@ Lecture_route.post("/addLecture", Lecture_contoller.addLecture);
 
 Lecture_route.get("/all-Lecturers", Lecture_contoller.getAllLectures);
 
-Lecture_route.get("/lecture-details/id:", Lecture_contoller.getLectureById);
+Lecture_route.get("/lecture-details/id:", Lecture_contoller.getLectureById);//Revisit
 
 Lecture_route.patch(
     "/updateLectureDetails/id:",
     Lecture_contoller.updateLectureCredentials
-);
+);//Revisit
 
 Lecture_route.delete("/delete-Lecture/id:", Lecture_contoller.deleteLecture);
 

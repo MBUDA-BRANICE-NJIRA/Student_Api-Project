@@ -1,11 +1,11 @@
 const express = require("express"); //! to import express
 require("dotenv").config(); //! to import dotenv
 require("./helpers/init_mongodb"); //! to import init_mongodb from Helpers folder
-const helmet = require("helmet"); //! to import helmet for security
 const rateLimit = require("express-rate-limit"); //! to import express-rate-limit for rate limiting
-
+const createError = require("http-errors"); //! to import http-errors for error handling
 const app = express(); //! to use express
 
+const helmet = require("helmet"); //! to import helmet for security
 
 app.use(helmet()); //! to use helmet for security
 //Linmit request from same API
@@ -14,7 +14,7 @@ const Limiter = rateLimit ({
     windowMs: 60 *60* 1000,
     message: "Too many request from this IP, please try again in an hour"
 });
-// app.use("/api", Limiter);
+app.use("/api", Limiter);
 
 
 //! Importing Routes:
@@ -25,9 +25,9 @@ const Student_Auth_Routes = require("./Routes/authRoutes");
 //! to use body-parser
 app.use(express.json());
 
-app.use("/students", Student_Routes);
-app.use("/lectures", Lecturer_routes);
-app.use("/studentAuth", Student_Auth_Routes);
+app.use("/api/students", Student_Routes);
+app.use("/api/lectures", Lecturer_routes);
+app.use("/api/studentAuth", Student_Auth_Routes);
 
 //! Using the Imported Routes:
 app.use(Student_Routes); //! Using the Imported Routes:
