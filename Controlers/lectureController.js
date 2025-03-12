@@ -1,7 +1,8 @@
 const { response } = require("express");
 const Lecture = require("../models/lectureModel");
-const { mongo, default: mongose } = require("mongoose");
 const { options } = require("../Routes/StudentRoutes");
+const createError = require('http-errors');
+const {default: mongoose} = require('mongoose');
 
 module.exports = {
     addLecture: async (request, response, next) => {
@@ -34,21 +35,26 @@ module.exports = {
             return response.status(500).send({ message: "Internal Server Error" });
         }
     },
+
     updateLectureDetails: async (request, response, next) => {
         const id = request.params.id;
+        const update = request.body;
+        const options = { new: true };
+      
         try {
-            const update = request.body;
-            options = { new: true };
-            const updateLecture = await Lecture.findByIdAndUpdate(id, update, options);
-            if (!updateLecture) {
-                throw createError(404, "Lecturer not found");
-            }
-            response.send(updateLecture);
+          const updateLecture = await Lecture.findByIdAndUpdate(id, update, options);
+          if (!updateLecture) {
+            throw createError(404, "Lecture not found");
+          }
+          response.send(updateLecture);
         } catch (error) {
-            console.error(error);
-            response.status(500).send({ message: "Internal Server Error" });
+          if (error.name === "CastError") {
+            return response.status(400).send({ message: "Invalid lecture ID" });
+          }
+          console.error("Error:", error);
+          response.status(500).send({ message: "Internal Server Error" });
         }
-    },
+      },
     deleteLecture: async (request, response, next) => {
         const id = request.params.id;
         try {

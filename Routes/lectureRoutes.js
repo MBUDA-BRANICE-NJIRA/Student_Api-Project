@@ -13,4 +13,4 @@ Lecture_route.patch("/updateLectureDetails/:id", Lecture_contoller.updateLecture
 
 Lecture_route.delete("/delete-Lecture/:id", Lecture_contoller.deleteLecture);
 
-module.exports = Lecture_route;
+module.exports = Lecture_route; 
