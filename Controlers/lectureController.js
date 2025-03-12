@@ -26,11 +26,12 @@ module.exports = {
         try {
             const getLecture = await Lecture.findById(id);
             if (!getLecture) {
-                throw createError(404, "Lecturer not found");
+                return response.status(404).send({ message: "Lecture not found" });
             }
             response.send(getLecture);
         } catch (error) {
-            console.log(error.message);
+            console.error(error);
+            return response.status(500).send({ message: "Internal Server Error" });
         }
     },
     updateLectureCredentials: async (request, response, next) => {
