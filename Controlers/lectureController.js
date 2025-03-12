@@ -34,23 +34,19 @@ module.exports = {
             return response.status(500).send({ message: "Internal Server Error" });
         }
     },
-    updateLectureCredentials: async (request, response, next) => {
+    updateLectureDetails: async (request, response, next) => {
         const id = request.params.id;
         try {
-            const id = request.params.id;
             const update = request.body;
             options = { new: true };
-            const updateLecture = await Lecture.findByIdAndUpdate(
-                id,
-                update,
-                options
-            );
+            const updateLecture = await Lecture.findByIdAndUpdate(id, update, options);
             if (!updateLecture) {
                 throw createError(404, "Lecturer not found");
             }
             response.send(updateLecture);
         } catch (error) {
-            console.log(error.message);
+            console.error(error);
+            response.status(500).send({ message: "Internal Server Error" });
         }
     },
     deleteLecture: async (request, response, next) => {
@@ -67,8 +63,7 @@ module.exports = {
     },
 };
 
-//give me a methode to generate a 16 bit secret key
 function generateSecretKey() {
-    const secretKey = crypto.randomBytes(2).toString('hex');
-    return secretKey
+    const secretKey = crypto.randomBytes(16).toString('hex');
+    return secretKey;
 }
