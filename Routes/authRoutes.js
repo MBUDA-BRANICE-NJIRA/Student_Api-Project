@@ -8,8 +8,6 @@ const mongoose = require("mongoose");
 
 
 
-
-
 routes.post("/register", studentAuthController.register);
 routes.get("/login", studentAuthController.login);
 routes.get('/getAllStudents', authController.getAllStudents);
