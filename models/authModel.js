@@ -41,6 +41,7 @@ StudentAuthSchema.methods.isValidPassword = async function (password) {
 };
 
 const StudentAuth = mongoose.model(
+    
     "studentsauth",
     StudentAuthSchema,
     "students_auth"
