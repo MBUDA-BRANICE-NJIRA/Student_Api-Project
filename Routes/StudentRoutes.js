@@ -20,7 +20,8 @@ routes.get("/getStudentById/:id", Student_controller.getStudentById);
 routes.patch("/updateStudent/:id", Student_controller.updateStudent);
 
 //! delete student from database
-routes.delete("/deleteStudent/id:", Student_controller.deleteStudent);//Revisit not yet checked
+routes.delete("/deleteStudent/:id", Student_controller.deleteStudent);
+
 
 module.exports = routes;
 

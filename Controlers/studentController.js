@@ -65,6 +65,7 @@ module.exports = {
             }
         }
     },
+    
     deleteStudent: async (request, response, next) => {
         const id = request.params.id;
         try {
@@ -72,7 +73,7 @@ module.exports = {
             if (!student) {
                 throw createError(
                     404,
-                    "Student does not exist, Please try again"
+                    `Student with ID ${id} not found`
                 );
             }
             response.send(student);
@@ -84,4 +85,6 @@ module.exports = {
             }
         }
     },
+    
+    
 };
