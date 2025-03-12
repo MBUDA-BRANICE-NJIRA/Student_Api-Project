@@ -6,8 +6,6 @@ const studentAuthController = require("../Controlers/authController");
 const mongoose = require("mongoose");
 // const student = require("../models/StudentModel");
 
-
-
 routes.post("/register", studentAuthController.register);
 routes.get("/login", studentAuthController.login);
 routes.get('/getAllStudents', authController.getAllStudents);
