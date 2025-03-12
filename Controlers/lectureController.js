@@ -55,18 +55,23 @@ module.exports = {
           response.status(500).send({ message: "Internal Server Error" });
         }
       },
-    deleteLecture: async (request, response, next) => {
+      deleteLecture: async (request, response, next) => {
         const id = request.params.id;
+      
         try {
-            const deleteLec = await Lecture.findByIdAndRemove(id);
-            if (!deleteLec) {
-                throw createError(404, "Lecture not found");
-            }
-            response.send(deleteLec);
+          const deletedLecture = await Lecture.findByIdAndRemove(id);
+          if (!deletedLecture) {
+            throw createError(404, "Lecture not found");
+          }
+          response.send({ message: "Lecture deleted successfully" });
         } catch (error) {
-            console.log(error.message);
+          if (error.name === "CastError") {
+            return response.status(400).send({ message: "Invalid lecture ID" });
+          }
+          console.error("Error:", error);
+          response.status(500).send({ message: "Internal Server Error" });
         }
-    },
+      }, 
 };
 
 function generateSecretKey() {
