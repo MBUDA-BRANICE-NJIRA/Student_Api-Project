@@ -65,7 +65,7 @@ module.exports = {
     },
        getAllStudents: async (request, response, next) => {
             try {
-                const result = await Student.find();
+                const result = await StudentAuth.find();
                 response.send(result);
             } catch (error) {
                 console.log(error.message);
