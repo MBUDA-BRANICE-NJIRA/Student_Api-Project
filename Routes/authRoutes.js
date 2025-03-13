@@ -1,17 +1,13 @@
 const express = require("express");
-const routes = express.Router();
-const authController = require("../Controlers/authController");
+const router = express.Router();
 const studentAuthController = require("../Controlers/authController");
 
-const mongoose = require("mongoose");
-// const student = require("../models/StudentModel");
+router.post("/register", studentAuthController.register);
+router.post("/login", studentAuthController.login);
+router.get("/getAllStudents", studentAuthController.getAllStudents);
+router.post("/addStudent", studentAuthController.addStudent);
+router.get("/getStudentById/:id", studentAuthController.getStudentById);
+router.put("/updateStudent/:id", studentAuthController.updateStudent);
+router.delete("/deleteStudent/:id", studentAuthController.deleteStudent);
 
-routes.post("/register", studentAuthController.register);
-routes.get("/login", studentAuthController.login);
-routes.get('/getAllStudents', authController.getAllStudents);
-routes.post('/AddStudent', authController.addStudent);
-
-
-
-
-module.exports = routes;
+module.exports = router;
