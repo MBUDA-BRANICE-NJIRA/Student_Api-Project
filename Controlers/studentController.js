@@ -6,14 +6,16 @@ const Student = require("../models/studentModel");
 const createError = require("http-errors");
 const {default: mongoose } = require("mongoose");
 module.exports = {
-    getAllStudents: async (request, response, next) => {
+    getAllStudents: async (req, res, next) => {
         try {
-            const result = await Student.find();
-            response.send(result);
+          const result = await Student.find();
+          res.json(result);
         } catch (error) {
-            console.log(error.message);
-        }
-    },
+          console.error("Error fetching students:", error.message);
+          next(error);
+        }
+      },
+    
     addStudent: async (req, res, next) => {
         try {
             
